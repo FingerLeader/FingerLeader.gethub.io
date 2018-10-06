@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="FingerLeader&#39;s Blog">
 <meta property="og:description" content="title: 【NOIP2008双栈排序】题目说什么，我做什么！ date: 2016-11-08 10:59:32 tags:临考前攒波rp。备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-06T08:30:23.349Z">
+<meta property="og:updated_time" content="2018-10-06T08:35:32.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FingerLeader&#39;s Blog">
 <meta name="twitter:description" content="title: 【NOIP2008双栈排序】题目说什么，我做什么！ date: 2016-11-08 10:59:32 tags:临考前攒波rp。备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解">
@@ -318,8 +318,44 @@ for(i = c+1 ;i &lt;= n ;i++)
 for(j = i ;j &lt;= n ;j++)
     if(f[j] &lt; f[c]) return 0;
 return 1;
-</code></pre><p>}<br>int main()<br>{<br>    scanf(“%d”,&amp;n);<br>    for(int i = 1 ;i &lt;= n ;i++) scanf(“%d”,&amp;f[i]);<br>    ans[1] = ‘a’;<br>    a[1] = f[1];<br>    for(int i = 2 ;i &lt;= 2<em>n ;i++){<br>        if(a[u] == p &amp;&amp; u) {<br>            u– ,p++;<br>            ans[i] = ‘b’;<br>            continue;<br>        }<br>        if(b[v] == p &amp;&amp; u &amp;&amp; v) {<br>            v– ,p++;<br>            ans[i] = ‘d’;<br>            continue;<br>        }<br>        if(a[u] &gt; f[c] &amp;&amp; check() || !u){<br>            ans[i] = ‘a’;<br>            a[++u] = f[c++];<br>            continue;<br>        }<br>        if(b[v] &gt; f[c] || !v){<br>            ans[i] = ‘c’;<br>            b[++v] = f[c++];<br>            continue;<br>        }<br>    }<br>    if(ans[2</em>n] == 0){<br>        printf(“0”);<br>        return 0;<br>    }<br>    for(int i = 1 ;i &lt;= 2*n ;i++)<br>        printf(“%c “,ans[i]);<br>    return 0;<br>}</p>
-
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i = 1 ;i &lt;= n ;i++) scanf(&quot;%d&quot;,&amp;f[i]);
+    ans[1] = &apos;a&apos;;
+    a[1] = f[1];
+    for(int i = 2 ;i &lt;= 2*n ;i++){
+        if(a[u] == p &amp;&amp; u) {
+            u-- ,p++;
+            ans[i] = &apos;b&apos;;
+            continue;
+        }
+        if(b[v] == p &amp;&amp; u &amp;&amp; v) {
+            v-- ,p++;
+            ans[i] = &apos;d&apos;;
+            continue;
+        }
+        if(a[u] &gt; f[c] &amp;&amp; check() || !u){
+            ans[i] = &apos;a&apos;;
+            a[++u] = f[c++];
+            continue;
+        }
+        if(b[v] &gt; f[c] || !v){
+            ans[i] = &apos;c&apos;;
+            b[++v] = f[c++];
+            continue;
+        }
+    }
+    if(ans[2*n] == 0){
+        printf(&quot;0&quot;);
+        return 0;
+    }
+    for(int i = 1 ;i &lt;= 2*n ;i++)
+        printf(&quot;%c &quot;,ans[i]);
+    return 0;
+}
+</code></pre>
       
     </div>
     
