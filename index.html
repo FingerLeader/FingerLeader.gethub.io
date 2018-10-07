@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/04/【NOIP2008双栈排序】题目说什么，我做什么！/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/【NOIP2008双栈排序】题目说什么，我做什么！/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanx">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/04/【NOIP2008双栈排序】题目说什么，我做什么！/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/10/07/【NOIP2008双栈排序】题目说什么，我做什么！/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-04T10:59:32+08:00">
-                2018-10-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T16:59:42+08:00">
+                2018-10-07
               </time>
             
 
@@ -300,8 +300,8 @@
       
         
           
-            <h2 id="【NOIP2008双栈排序】题目说什么，我做什么！"><a href="#【NOIP2008双栈排序】题目说什么，我做什么！" class="headerlink" title="【NOIP2008双栈排序】题目说什么，我做什么！"></a>【NOIP2008双栈排序】题目说什么，我做什么！</h2><p>date: 2016-11-08 10:59:32</p>
-<h2 id="tags-双栈排序"><a href="#tags-双栈排序" class="headerlink" title="tags:   双栈排序"></a>tags:   双栈排序</h2><p>临考前攒波rp。<br>备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（）函数里两个循环都可以预处理掉，都是求后缀第一个比它大的值，但还是避不开循环，常数级的优化吧。</p>
+            <h2 id="【NOIP2008双栈排序】题目说什么，我做什么！"><a href="#【NOIP2008双栈排序】题目说什么，我做什么！" class="headerlink" title="【NOIP2008双栈排序】题目说什么，我做什么！"></a>【NOIP2008双栈排序】题目说什么，我做什么！</h2><p>title: wu<br>date: 2016-11-08 10:59:32</p>
+<h2 id="tags-dfs"><a href="#tags-dfs" class="headerlink" title="tags:   dfs"></a>tags:   dfs</h2><p>临考前攒波rp。<br>备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（）函数里两个循环都可以预处理掉，都是求后缀第一个比它大的值，但还是避不开循环，常数级的优化吧。</p>
 <p>双栈排序</p>
 <p>题目描述 Description<br>Tom最近在研究一个有趣的排序问题。如图所示，通过2个栈S1和S2，Tom希望借助以下4种操作实现将输入序列升序排序。<br>操作a<br>如果输入序列不为空，将第一个元素压入栈S1<br>操作b<br>如果栈S1不为空，将S1栈顶元素弹出至输出序列<br>操作c<br>如果输入序列不为空，将第一个元素压入栈S2<br>操作d<br>如果栈S2不为空，将S2栈顶元素弹出至输出序列<br>如果一个1~n的排列P可以通过一系列操作使得输出序列为1，2，…，(n-1)，n，Tom就称P是一个“可双栈排序排列”。例如(1,3,2,4)就是一个“可双栈排序序列”，而(2,3,4,1)不是。下图描述了一个将(1,3,2,4)排序的操作序列：</p>
 <pre><code>#include &lt;iostream&gt;
