@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="差分数组," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="才水了一发noip12年的d2 t2 ，学到一个很有意思的东西 ——差分数组。当一个区间有加减操作，且当你开始查询时已经不会变化的时候就可以用用这个差分数组。 当你对一段区间进行加减操作的时候，实际上对这段区间[l,r]来说就是在进入它的时候（l）初始值s加上k，在从它出去的时候（r+1）相较于之前减少k，那么就可以得到s这个个区间里数值的状态。比如：一个5元数组：   0  0  0  0  0">
+<meta name="keywords" content="差分数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【差分数组】借教室题解">
+<meta property="og:url" content="http://yoursite.com/2018/10/07/【差分数组】借教室题解/index.html">
+<meta property="og:site_name" content="FingerLeader&#39;s Blog">
+<meta property="og:description" content="才水了一发noip12年的d2 t2 ，学到一个很有意思的东西 ——差分数组。当一个区间有加减操作，且当你开始查询时已经不会变化的时候就可以用用这个差分数组。 当你对一段区间进行加减操作的时候，实际上对这段区间[l,r]来说就是在进入它的时候（l）初始值s加上k，在从它出去的时候（r+1）相较于之前减少k，那么就可以得到s这个个区间里数值的状态。比如：一个5元数组：   0  0  0  0  0">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-07T13:59:06.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【差分数组】借教室题解">
+<meta name="twitter:description" content="才水了一发noip12年的d2 t2 ，学到一个很有意思的东西 ——差分数组。当一个区间有加减操作，且当你开始查询时已经不会变化的时候就可以用用这个差分数组。 当你对一段区间进行加减操作的时候，实际上对这段区间[l,r]来说就是在进入它的时候（l）初始值s加上k，在从它出去的时候（r+1）相较于之前减少k，那么就可以得到s这个个区间里数值的状态。比如：一个5元数组：   0  0  0  0  0">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/07/【差分数组】借教室题解/"/>
+
+
+
+
+
+  <title>【差分数组】借教室题解 | FingerLeader's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FingerLeader's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/【差分数组】借教室题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FingerLeader's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【差分数组】借教室题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T21:58:32+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>才水了一发noip12年的d2 t2 ，学到一个很有意思的东西 ——差分数组。<br><strong>当一个区间有加减操作，且当你开始查询时已经不会变化</strong>的时候就可以用用这个差分数组。</p>
+<p>当你对一段区间进行加减操作的时候，实际上对这段区间[l,r]来说就是在进入它的时候（l）初始值s加上k，在从它出去的时候（r+1）相较于之前减少k，那么就可以得到s这个个区间里数值的状态。<br><strong>比如</strong>：<br>一个5元数组：   0  0  0  0  0<br>​         对它1~2      +1     （A）<br>​                3~4      +3     （B）<br>​                1~5       -1      ( C )<br>​    那么初始值s = 0 ，进入[1]时（A左 ，C左），s += 1 ，s -= 1   -&gt;  s = 0；<br>​                                 进入[2]时，无操作                                           ，s = 0；<br>​                                 进入[3]时（A右+1 ，B左），s -= 1 ,s += 3  -&gt;  s = 2;<br>​                                 进入[4]时，无操作                                           ，s = 2；<br>​                                 进入[5]时（B右+1）， s  -= 3             -&gt;           s = -1;<br>​    总结得到数组 0  0  2  2 -1；<br>​    大家可以对照上面的操作手动模拟一下，看一下得到的结果是不是这个。同样的，对于不是这样全0的数组，只要在每个点加上原来数组值就可以了。例如1 2 3 4 5各自加上si之后就是1 2 5 6 4.</p>
+<p>下面来看例题：<br><strong>借教室</strong><br>题目描述 Description<br>在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要</p>
+<p>向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。</p>
+<p>面对海量租借教室的信息，我们自然希望编程解决这个问题。</p>
+<p>我们需要处理接下来n天的借教室信息，其中第i天学校有ri个教室可供租借。共有m份</p>
+<p>订单，每份订单用三个正整数描述，分别为dj, sj, tj，表示某租借者需要从第sj天到第tj天租</p>
+<p>借教室（包括第sj天和第tj天），每天需要租借dj个教室。</p>
+<p>我们假定，租借者对教室的大小、地点没有要求。即对于每份订单，我们只需要每天提</p>
+<p>供dj个教室，而它们具体是哪些教室，每天是否是相同的教室则不用考虑。</p>
+<p>借教室的原则是先到先得，也就是说我们要按照订单的先后顺序依次为每份订单分配教</p>
+<p>室。如果在分配的过程中遇到一份订单无法完全满足，则需要停止教室的分配，通知当前申</p>
+<p>请人修改订单。这里的无法满足指从第sj天到第tj天中有至少一天剩余的教室数量不足dj个。</p>
+<p>现在我们需要知道，是否会有订单无法完全满足。如果有，需要通知哪一个申请人修改</p>
+<p>订单。</p>
+<p>输入描述 Input Description<br>第一行包含两个正整数n, m，表示天数和订单的数量。</p>
+<p>提高组  day2 </p>
+<p>第二行包含n个正整数，其中第i个数为ri，表示第i天可用于租借的教室数量。</p>
+<p>接下来有m行，每行包含三个正整数dj, sj, tj，表示租借的数量，租借开始、结束分别在</p>
+<p>第几天。</p>
+<p>每行相邻的两个数之间均用一个空格隔开。天数与订单均用从1开始的整数编号。</p>
+<p>输出描述 Output Description<br>如果所有订单均可满足，则输出只有一行，包含一个整数 0。否则（订单无法完全满足）</p>
+<p>输出两行，第一行输出一个负整数-1，第二行输出需要修改订单的申请人编号。</p>
+<p>样例输入 Sample Input<br>4 3 </p>
+<p>2 5 4 3 </p>
+<p>2 1 3 </p>
+<p>3 2 4 </p>
+<p>4 2 4 </p>
+<p>样例输出 Sample Output<br>-1 </p>
+<p>2 </p>
+<p>分析：实际上就是用差分数组来看到到第i天时我们的s有没有超过a[i]，然后二分查找答案即可，时间复杂度O（nlogn）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n ,m ,s ,ans;</span><br><span class="line">int a[1000010] ,b[1000010];</span><br><span class="line">struct Day&#123;</span><br><span class="line">	int num ,x ,y;</span><br><span class="line">&#125;d[1000010];</span><br><span class="line">bool check(int len)&#123;</span><br><span class="line">	memset(b ,0 ,sizeof(b));</span><br><span class="line">	s = 0;</span><br><span class="line">	for(int i = 1 ;i &lt;= len ;i++)&#123;</span><br><span class="line">		b[d[i].x] += d[i].num;                           //进来时加上</span><br><span class="line">		b[d[i].y+1] -= d[i].num;                         //出去后减走</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = 1 ;i &lt;= n ;i++)&#123;</span><br><span class="line">		s += b[i];                                       //进行举例中的操作，计算每一天的“s”</span><br><span class="line">		if(s &gt; a[i])return true;</span><br><span class="line">	&#125;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	for(int i = 1 ;i &lt;= n ;i++) scanf(&quot;%d&quot;,&amp;a[i]); </span><br><span class="line">	for(int i = 1 ;i &lt;= m ;i++) scanf(&quot;%d%d%d&quot;,&amp;d[i].num ,&amp;d[i].x ,&amp;d[i].y);</span><br><span class="line">	int l = 1 ,r = m;</span><br><span class="line">	while(l &lt;= r)&#123;                                  //对答案进行二分</span><br><span class="line">		int m = l+r&gt;&gt;1;</span><br><span class="line">		if(check(m))  ans = m ,r = m-1;</span><br><span class="line">		else l = m+1;</span><br><span class="line">	&#125;</span><br><span class="line">	if(!ans)printf(&quot;0\n&quot;);</span><br><span class="line">	else	printf(&quot;-1\n%d&quot;,ans);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>希望大家能有所收获 = = </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/差分数组/" rel="tag"># 差分数组</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/08/【NOIP2008双栈排序】题目说什么，我做什么！/" rel="next" title="【NOIP2008双栈排序】题目说什么，我做什么！">
+                <i class="fa fa-chevron-left"></i> 【NOIP2008双栈排序】题目说什么，我做什么！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wanx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
