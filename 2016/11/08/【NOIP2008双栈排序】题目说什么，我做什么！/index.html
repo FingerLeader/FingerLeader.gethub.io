@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="dfs," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="FingerLeader&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="临考前攒波rp。备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（">
+<meta name="keywords" content="dfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【NOIP2008双栈排序】题目说什么，我做什么！">
+<meta property="og:url" content="http://yoursite.com/2016/11/08/【NOIP2008双栈排序】题目说什么，我做什么！/index.html">
 <meta property="og:site_name" content="FingerLeader&#39;s Blog">
+<meta property="og:description" content="临考前攒波rp。备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-07T09:24:27.189Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FingerLeader&#39;s Blog">
+<meta name="twitter:title" content="【NOIP2008双栈排序】题目说什么，我做什么！">
+<meta name="twitter:description" content="临考前攒波rp。备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/08/【NOIP2008双栈排序】题目说什么，我做什么！/"/>
 
 
 
 
 
-  <title>FingerLeader's Blog</title>
+  <title>【NOIP2008双栈排序】题目说什么，我做什么！ | FingerLeader's Blog</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +218,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/08/【NOIP2008双栈排序】题目说什么，我做什么！/" itemprop="url">【NOIP2008双栈排序】题目说什么，我做什么！</a></h1>
+          <h1 class="post-title" itemprop="name headline">【NOIP2008双栈排序】题目说什么，我做什么！</h1>
         
 
         <div class="post-meta">
@@ -298,14 +300,10 @@
       
 
       
-        
-          
-            <p>临考前攒波rp。<br>备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（）函数里两个循环都可以预处理掉，都是求后缀第一个比它大的值，但还是避不开循环，常数级的优化吧。</p>
+        <p>临考前攒波rp。<br>备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（）函数里两个循环都可以预处理掉，都是求后缀第一个比它大的值，但还是避不开循环，常数级的优化吧。</p>
 <p>双栈排序</p>
 <p>题目描述 Description<br>Tom最近在研究一个有趣的排序问题。如图所示，通过2个栈S1和S2，Tom希望借助以下4种操作实现将输入序列升序排序。<br>操作a<br>如果输入序列不为空，将第一个元素压入栈S1<br>操作b<br>如果栈S1不为空，将S1栈顶元素弹出至输出序列<br>操作c<br>如果输入序列不为空，将第一个元素压入栈S2<br>操作d<br>如果栈S2不为空，将S2栈顶元素弹出至输出序列<br>如果一个1~n的排列P可以通过一系列操作使得输出序列为1，2，…，(n-1)，n，Tom就称P是一个“可双栈排序排列”。例如(1,3,2,4)就是一个“可双栈排序序列”，而(2,3,4,1)不是。下图描述了一个将(1,3,2,4)排序的操作序列：<br>​    #include <iostream><br>​    #include <cstdio><br>​    using namespace std;<br>​    int a[1005] ,b[1005] ,f[1005] ,n ,u=1 ,v ,c=2 ,p=1;<br>​    char ans[2005];<br>​    bool check(){<br>​    if(!v) return 1;<br>​    int i ,j;<br>​    for(i = c+1 ;i &lt;= n ;i++)<br>​        if(f[i] &gt; f[c] &amp;&amp; f[i] &gt; b[v]) break;<br>​    for(j = i ;j &lt;= n ;j++)<br>​        if(f[j] &lt; f[c]) return 0;<br>​    return 1;<br>​    }<br>​    int main()<br>​    {<br>​        scanf(“%d”,&amp;n);<br>​        for(int i = 1 ;i &lt;= n ;i++) scanf(“%d”,&amp;f[i]);<br>​        ans[1] = ‘a’;<br>​        a[1] = f[1];<br>​        for(int i = 2 ;i &lt;= 2<em>n ;i++){<br>​            if(a[u] == p &amp;&amp; u) {<br>​                u– ,p++;<br>​                ans[i] = ‘b’;<br>​                continue;<br>​            }<br>​            if(b[v] == p &amp;&amp; u &amp;&amp; v) {<br>​                v– ,p++;<br>​                ans[i] = ‘d’;<br>​                continue;<br>​            }<br>​            if(a[u] &gt; f[c] &amp;&amp; check() || !u){<br>​                ans[i] = ‘a’;<br>​                a[++u] = f[c++];<br>​                continue;<br>​            }<br>​            if(b[v] &gt; f[c] || !v){<br>​                ans[i] = ‘c’;<br>​                b[++v] = f[c++];<br>​                continue;<br>​            }<br>​        }<br>​        if(ans[2</em>n] == 0){<br>​            printf(“0”);<br>​            return 0;<br>​        }<br>​        for(int i = 1 ;i &lt;= 2*n ;i++)<br>​            printf(“%c “,ans[i]);<br>​        return 0;<br>​    }</cstdio></iostream></p>
 
-          
-        
       
     </div>
     
@@ -320,14 +318,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/dfs/" rel="tag"># dfs</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -337,10 +341,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -348,6 +353,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -560,6 +569,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
