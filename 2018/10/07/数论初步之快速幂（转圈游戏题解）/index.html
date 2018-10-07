@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数论," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="FingerLeader&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="转圈游戏 题目描述 Description n 个小伙伴（编号从 0 到 n-1）围坐一圈玩游戏。按照顺时针方向给 n 个位置编号，从0 到 n-1。最初，第 0 号小伙伴在第 0 号位置，第 1 号小伙伴在第 1 号位置，……，依此类推。 游戏规则如下：每一轮第 0 号位置上的小伙伴顺时针走到第 m 号位置，第 1 号位置小伙伴走到第 m+1 号位置，……，依此类推，第n - m号位置上的小伙伴">
+<meta name="keywords" content="数论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论初步之快速幂（转圈游戏题解）">
+<meta property="og:url" content="http://yoursite.com/2018/10/07/数论初步之快速幂（转圈游戏题解）/index.html">
 <meta property="og:site_name" content="FingerLeader&#39;s Blog">
+<meta property="og:description" content="转圈游戏 题目描述 Description n 个小伙伴（编号从 0 到 n-1）围坐一圈玩游戏。按照顺时针方向给 n 个位置编号，从0 到 n-1。最初，第 0 号小伙伴在第 0 号位置，第 1 号小伙伴在第 1 号位置，……，依此类推。 游戏规则如下：每一轮第 0 号位置上的小伙伴顺时针走到第 m 号位置，第 1 号位置小伙伴走到第 m+1 号位置，……，依此类推，第n - m号位置上的小伙伴">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-07T13:56:55.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FingerLeader&#39;s Blog">
+<meta name="twitter:title" content="数论初步之快速幂（转圈游戏题解）">
+<meta name="twitter:description" content="转圈游戏 题目描述 Description n 个小伙伴（编号从 0 到 n-1）围坐一圈玩游戏。按照顺时针方向给 n 个位置编号，从0 到 n-1。最初，第 0 号小伙伴在第 0 号位置，第 1 号小伙伴在第 1 号位置，……，依此类推。 游戏规则如下：每一轮第 0 号位置上的小伙伴顺时针走到第 m 号位置，第 1 号位置小伙伴走到第 m+1 号位置，……，依此类推，第n - m号位置上的小伙伴">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/07/数论初步之快速幂（转圈游戏题解）/"/>
 
 
 
 
 
-  <title>FingerLeader's Blog</title>
+  <title>数论初步之快速幂（转圈游戏题解） | FingerLeader's Blog</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +218,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/07/数论初步之快速幂（转圈游戏题解）/" itemprop="url">数论初步之快速幂（转圈游戏题解）</a></h1>
+          <h1 class="post-title" itemprop="name headline">数论初步之快速幂（转圈游戏题解）</h1>
         
 
         <div class="post-meta">
@@ -298,9 +300,7 @@
       
 
       
-        
-          
-            <p><strong>转圈游戏</strong></p>
+        <p><strong>转圈游戏</strong></p>
 <p>题目描述 Description<br> n 个小伙伴（编号从 0 到 n-1）围坐一圈玩游戏。按照顺时针方向给 n 个位置编号，从0 到 n-1。最初，第 0 号小伙伴在第 0 号位置，第 1 号小伙伴在第 1 号位置，……，依此类推。<br> 游戏规则如下：每一轮第 0 号位置上的小伙伴顺时针走到第 m 号位置，第 1 号位置小伙伴走到第 m+1 号位置，……，依此类推，第n - m号位置上的小伙伴走到第 0 号位置，第n-m+1 号位置上的小伙伴走到第 1 号位置，……，第 n-1 号位置上的小伙伴顺时针走到第m-1 号位置。<br> 现在，一共进行了 10^k 轮，请问 x 号小伙伴最后走到了第几号位置。</p>
 <p>输入描述 Input Description<br> 输入共 1 行，包含 4 个整数 n、m、k、x，每两个整数之间用一个空格隔开。</p>
 <p>输出描述 Output Description<br> 输出共 1 行，包含 1 个整数，表示 10^k 轮后 x 号小伙伴所在的位置编号。</p>
@@ -315,8 +315,6 @@
 <p>完整代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n ,m ,x ,z ,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">ksm</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a ,<span class="keyword">long</span> <span class="keyword">long</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k == <span class="number">1</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> c=ksm(a ,k/<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span>(k%<span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> (c * c * a)%n;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> (c * c)%n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k&gt;&gt;x;</span><br><span class="line">    z = m * ksm(<span class="number">10</span> ,k);</span><br><span class="line">    z+= x;</span><br><span class="line">    z = z%n;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;z;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -331,137 +329,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/08/【NOIP2008双栈排序】题目说什么，我做什么！/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanx">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FingerLeader's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/08/【NOIP2008双栈排序】题目说什么，我做什么！/" itemprop="url">【NOIP2008双栈排序】题目说什么，我做什么！</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T10:59:32+08:00">
-                2016-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/数论/" rel="tag"># 数论</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>临考前攒波rp。<br>备考复习往年noip题目，做到了这个双栈排序，网上大部分解法又有什么推结论啊，动归优化啊，二分图染色啊特别麻烦。但是cs他路子野啊，题目说什么他干什么，一个dfs解决问题，我就再简化了下程序，直接一个for循环，加一个check（）函数解决，代码量和理解难度瞬间往下降了几个层次，跟模拟差不多了。i，j，k的那个结论还是需要的，网上证明有很多，我也就不再赘述。要提一下的是check（）函数里两个循环都可以预处理掉，都是求后缀第一个比它大的值，但还是避不开循环，常数级的优化吧。</p>
-<p>双栈排序</p>
-<p>题目描述 Description<br>Tom最近在研究一个有趣的排序问题。如图所示，通过2个栈S1和S2，Tom希望借助以下4种操作实现将输入序列升序排序。<br>操作a<br>如果输入序列不为空，将第一个元素压入栈S1<br>操作b<br>如果栈S1不为空，将S1栈顶元素弹出至输出序列<br>操作c<br>如果输入序列不为空，将第一个元素压入栈S2<br>操作d<br>如果栈S2不为空，将S2栈顶元素弹出至输出序列<br>如果一个1~n的排列P可以通过一系列操作使得输出序列为1，2，…，(n-1)，n，Tom就称P是一个“可双栈排序排列”。例如(1,3,2,4)就是一个“可双栈排序序列”，而(2,3,4,1)不是。下图描述了一个将(1,3,2,4)排序的操作序列：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">1005</span>] ,b[<span class="number">1005</span>] ,f[<span class="number">1005</span>] ,n ,u=<span class="number">1</span> ,v ,c=<span class="number">2</span> ,p=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ans[<span class="number">2005</span>];</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!v) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> i ,j;</span><br><span class="line">    <span class="keyword">for</span>(i = c+<span class="number">1</span> ;i &lt;= n ;i++)  </span><br><span class="line">        <span class="keyword">if</span>(f[i] &gt; f[c] &amp;&amp; f[i] &gt; b[v]) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">for</span>(j = i ;j &lt;= n ;j++)</span><br><span class="line">        <span class="keyword">if</span>(f[j] &lt; f[c]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ;i &lt;= n ;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;f[i]);</span><br><span class="line">        ans[<span class="number">1</span>] = <span class="string">'a'</span>;</span><br><span class="line">        a[<span class="number">1</span>] = f[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span> ;i &lt;= <span class="number">2</span>*n ;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[u] == p &amp;&amp; u) &#123;</span><br><span class="line">                u-- ,p++;</span><br><span class="line">                ans[i] = <span class="string">'b'</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(b[v] == p &amp;&amp; u &amp;&amp; v) &#123;</span><br><span class="line">                v-- ,p++;</span><br><span class="line">                ans[i] = <span class="string">'d'</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(a[u] &gt; f[c] &amp;&amp; check() || !u)&#123;</span><br><span class="line">                ans[i] = <span class="string">'a'</span>;</span><br><span class="line">                a[++u] = f[c++];</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(b[v] &gt; f[c] || !v)&#123;</span><br><span class="line">                ans[i] = <span class="string">'c'</span>;</span><br><span class="line">                b[++v] = f[c++];</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ans[<span class="number">2</span>*n] == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ;i &lt;= <span class="number">2</span>*n ;i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c "</span>,ans[i]);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/08/【NOIP2008双栈排序】题目说什么，我做什么！/" rel="next" title="【NOIP2008双栈排序】题目说什么，我做什么！">
+                <i class="fa fa-chevron-left"></i> 【NOIP2008双栈排序】题目说什么，我做什么！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -471,10 +368,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -482,6 +380,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -694,6 +596,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
